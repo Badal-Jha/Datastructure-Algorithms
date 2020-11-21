@@ -1,0 +1,17 @@
+https://codeforces.com/blog/entry/68138
+https://www.topcoder.com/community/competitive-programming/tutorials/an-introduction-to-binary-search-and-red-black-trees/
+Topcoder Competative Coding tutorials
+https://www.topcoder.com/community/competitive-programming/tutorials/
+Binery search
+https://leetcode.com/explore/learn/card/binary-search/ 
+Maths
+https://codeforces.com/blog/entry/77137 
+
+ruddy12
+Apr '17
+@MrsColombo I had this problem too but managed to solve it, the error is that ur computer has saved a git username and password so if you shift to another account the error 403 will appear. Below is the solution
+For Windows you can find the keys here:
+
+control panel > user accounts > credential manager > Windows credentials > Generic credentials
+
+Next remove the Github keys.
