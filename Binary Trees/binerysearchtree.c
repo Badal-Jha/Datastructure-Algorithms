@@ -41,39 +41,39 @@ struct Node *getSuccesor(struct Node *curr)
 
 //deletion in binery search tree
 struct Node *deletNode(struct Node *root, int key)
-{
+{   
     if (root == NULL)
         return NULL;
     if (root->data > key)
     {
-        root->left = deletNode(root->left, key);
+      root->left = deletNode(root->left, key);
     }
     else if (root->data < key)
     {
-        root->right = deletNode(root->right, key);
+      root->right = deletNode(root->right, key);
     }
     else
-    {
-        if (root->right == NULL)
+    {   
+       if (root->right == NULL)
         {
            struct  Node *temp = root->left;
            free(root);
-            return temp;
-        }
+          return temp;
+    }
         else if (root->left == NULL)
         {
             struct Node *temp = root->right;
             free(root);
-            return temp;
+         return  temp;
         }
         else
         {
             struct Node *succ=getSuccesor(root);
             root->data=succ->data;
-            root->right=deletNode(root->right,succ->data);
+          root->right=deletNode(root->right,succ->data);
         }
     }
-    return root;
+ //   return root;
 }
 int heightNode(struct Node *root)
 {   if(root==NULL)return 0;
@@ -93,23 +93,31 @@ void preorder(struct Node *root)
 int main()
 {
     struct Node *root=NULL;
-    printf("data before deletion: ");
-    root=insertBST(root,10);
- 
-    root=insertBST(root,5);
- 
-    root=insertBST(root,15);
-    root=insertBST(root,12);
-    root=insertBST(root,18);
-    root=insertBST(root,20);
-    root=insertBST(root,25);
-    
-    preorder(root);
-      printf("\nHeight of tree: %d",heightNode(root));
-    printf("\nDeletion...\n");
-    deletNode(root,15);
-    printf("data after deletion: ");
-     preorder(root);
+    printf("enter 0:to do nothing, 1:to insert, 2:delete ,3:print data\n\n");
+  
+    while(1)
+    {   int t;
+      printf("\nenter key(0,1,2,3): ");
+         scanf("%d",&t);
+    	if(t==0)
+    	break;
+    	else if(t==1)
+    	{   printf("\nenter data to insert: ");
+    		int x;
+    		scanf("%d",&x);
+    		root=insertBST(root,x);
+		}
+		else if (t==2)
+		{   printf("\nenter data to delete: ");
+			int key;
+			scanf("%d",&key);
+	      root= deletNode(root,key);
+		}
+    	else if(t==3)
+    	{   printf("\n\nElements present in BST is: ");
+    		preorder(root);
+		}
+	}
  
     return 0;
 }

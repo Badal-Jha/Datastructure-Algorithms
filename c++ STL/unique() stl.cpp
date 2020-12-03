@@ -1,6 +1,6 @@
 // C++ program to demonstrate the use of std::unique 
-std::unique is used to remove duplicates of any element present consecutively in a range[first, last).
- It performs this task for all the sub-groups present in the range having the same element present consecutively.
+//std::unique is used to remove duplicates of any element present consecutively in a range[first, last).
+// It performs this task for all the sub-groups present in the range having the same element present consecutively.
 #include <iostream> 
 #include <vector> 
 #include <algorithm> 

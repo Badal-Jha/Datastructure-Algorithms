@@ -1,100 +1,80 @@
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
 #include<stdio.h>
- 
-typedef struct node
-{
+#include<stdlib.h>
+struct Node{
 	int data;
-	struct node *left;
-	struct node *right;
-} node;
+	struct Node *left,*right;
+};
+
  
-node *create()
+struct Node *create(struct Node *root)
 {
-	node *p;
+struct Node *p=root;
 	int x;
-	printf("Enter data(-1 for no data):");
+	printf("Enter data(-1 for NULL):");
 	scanf("%d",&x);
 	
 	if(x==-1)
 		return NULL;
 	
-	p=(node*)malloc(sizeof(node));
+	p=malloc(sizeof(struct Node));
 	p->data=x;
 	
 	printf("Enter left child of %d:\n",x);
-	p->left=create();
+	p->left=create(p->left);
  
 	printf("Enter right child of %d:\n",x);
-	p->right=create();
+	p->right=create(p->right);
 	
 	return p;
 }
- 
-void preorder(node *t)		//address of root node is passed in t
+
+// inorder traversal: first call left child then print data than call right child
+void inorder(struct Node *root)
 {
-	if(t!=NULL)
+	if(root!=NULL)
 	{
-		printf("\n%d",t->data);		//visit the root
-		preorder(t->left);		//preorder traversal on left subtree
-		preorder(t->right);		//preorder traversal om right subtree
+		inorder(root->left);
+		
+		printf("%d ",root->data);
+		
+		inorder(root->right);
 	}
 }
- 
+
+//preorder traversal:  first print the data then call left child then call right child
+void preorder(struct Node *root)
+{
+	if(root!=NULL)
+	{    printf("%d ",root->data);   
+	
+	  	inorder(root->left);
+		
+		inorder(root->right);
+	}
+}
+
+//postorder traversal: first call left child then right child then print data
+void postorder(struct Node *root)
+{
+	if(root!=NULL)
+	{
+		inorder(root->left);
+		
+		inorder(root->right);
+		
+		printf("%d ",root->data);
+	}
+}
 int main()
-{	
-	node *root;
-	root=create();
-	printf("\nThe preorder traversal of tree is:\n");
+{
+	struct Node *root=NULL;
+	root=create(root);
+	printf("\ninoreder traversal: ");
+	inorder(root);
+	printf("\npreorder traversal: ");
 	preorder(root);
+	printf("\npostorder traversal: ");
+	postorder(root);
 	
 	return 0;
 }

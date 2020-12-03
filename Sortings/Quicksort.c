@@ -14,8 +14,8 @@ int partition (int arr[], int low, int high)
 { 
     int pivot = arr[high];    // pivot 
     int i = (low - 1);  // Index of smaller element 
-  
-    for (int j = low; j <= high- 1; j++) 
+    int j;
+    for (j = low; j <= high- 1; j++) 
     { 
         
         if (arr[j] < pivot) 
@@ -53,8 +53,16 @@ void printArray(int arr[], int size)
 
 int main() 
 { 
-    int arr[] = {12, 6, 7, 9, 1, 5}; 
-    int n = sizeof(arr)/sizeof(arr[0]); 
+    
+     int n,i;
+    printf("Enter size of array: ");
+    scanf("%d",&n);
+    int arr[n];
+    printf("Enter elements of array: ");
+    for(i=0;i<n;i++)
+    {
+    	scanf("%d",&arr[i]);
+	}
     quickSort(arr, 0, n-1); 
     printf("Sorted array: \n"); 
     printArray(arr, n); 
