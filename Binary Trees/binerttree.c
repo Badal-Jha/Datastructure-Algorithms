@@ -16,7 +16,7 @@ struct Node *p=root;
 	if(x==-1)
 		return NULL;
 	
-	p=malloc(sizeof(struct Node));
+	p=(struct Node*)malloc(sizeof(struct Node));
 	p->data=x;
 	
 	printf("Enter left child of %d:\n",x);

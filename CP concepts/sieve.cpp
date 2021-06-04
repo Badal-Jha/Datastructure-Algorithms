@@ -1,22 +1,22 @@
+  
 #include<iostream>
 #include<cmath>
 using namespace std;
 typedef long long ll;
-#define  maxN 1000005
- int p[maxN]={0};
-void sieve_Prime()
-{  
-	for(int i=3;i<=maxN;i+=2)
+void sieve_Prime(int *p)
+{   int n;
+    cin>>n;
+	for(int i=3;i<=n;i+=2)
 	{
 	
 	p[i]=1;}
 	p[0]=p[1]=0;
 	p[2]=1;
-	for(int i=3;i<=sqrt(maxN);i+=2)
+	for(int i=3;i<=sqrt(n);i+=2)
 	{   
 		if(p[i]==1)
 		{
-			for(int j=i*i;j<=maxN;j+=i)
+			for(int j=i*i;j<=n;j+=i)
 		    {	p[j]=0;
 	         
 			   } 
@@ -25,8 +25,8 @@ void sieve_Prime()
 }
 int main()
 {  
- 
-   sieve_Prime();
+  int p[100005]={0};
+  sieve_Prime(p);
    	 for(int i=3;i<1000;i+=2)
     {  if(p[i]==1)
         cout<<i<<" ";
